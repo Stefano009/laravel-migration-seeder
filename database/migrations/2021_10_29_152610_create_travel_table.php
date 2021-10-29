@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkersTable extends Migration
+class CreateTravelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateWorkersTable extends Migration
      */
     public function up()
     {
-        Schema::create('Workers', function (Blueprint $table) {
+        Schema::create('Travel', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('last_name');
-            $table->smallinteger('age');
-            $table->string('level');
+            $table->string('leaving_location', 50);
+            $table->string('landing_location', 50);
+            $table->date('flight_date');
+            $table->date('flight_back_date');
+            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateWorkersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workers');
+        Schema::dropIfExists('travel');
     }
 }
